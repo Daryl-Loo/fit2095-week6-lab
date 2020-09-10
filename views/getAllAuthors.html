@@ -7,15 +7,16 @@
 </head>
 <body>
 <a href="/" >Home</a>
-<a href="/addbook" >Add Book</a>
-<a href="/getbooks" >Get All Books</a>
-<a href="/updatebook" >Update Book</a>
-<a href="/deletebook" >Delete Book by ISBN</a>
-<a href="/deleteauthor" >Delete Books by Author</a>
+<a href="/addbook" >Insert new Book </a>
+<a href="/getbooks" >Get all Books</a>
+<a href="/addauthor" >Insert a new Author</a>
+<a href="/getAuthors" >Get all Authors</a>
+<a href="/updatebook" >Update a book by ISBN</a>
+<a href="/deletebook" >Delete book by book ISBN</a>
+<a href="/updateAuthorNumBooks" >Update Author numBooks by _id</a>
 <h2 style = "color: cyan; text-align: center">
-    Here, a table of authors currently in the library is generated. There are currently <%= db.length %> books!
-    <br>
-    Be careful of the button at the bottom. It removes all documents on the database
+    Here, a table of authors currently in the library is generated. There are currently <%= db.length %> Authors!
+
 </h2>
 <table>
     <tr>
@@ -28,7 +29,7 @@
         <td> Suburb </td>
         <td> Street </td>
         <td> Unit </td>
-        <td> Object ID </td>
+        <td> Author ID </td>
     </tr>
     <% for (let i=0;i<db.length;i++){ %>
     <tr>
@@ -46,10 +47,6 @@
     <%}%>
 </table>
 
-<form action="/nukeAuthor" method="POST">
-    Removes all Authors from Mongoose :
-    <button>Delete All</button>
-</form>
 
 </body>
 </html>

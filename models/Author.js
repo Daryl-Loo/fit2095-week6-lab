@@ -7,14 +7,17 @@ const authorSchema = mongoose.Schema({
             required: true
         },
         lastName: {
-            type: String
+            type: String,
+            required: false
         }
     },
     dob: {
-        type: Date
+        type: Date,
+        required: false
     },
     address: {
         state:{
+        required: false,
             type: String,
             validate:{
                 validator: function(stateLength){
@@ -24,17 +27,21 @@ const authorSchema = mongoose.Schema({
             }
         },
         suburb:{
+            required: false,
             type: String
         },
         street:{
+            required: false,
             type: String
         },
         unit:{
+            required: false,
             type: String
         }
     }
     ,
     numBooks: {
+        required: false,
         type: Number,
         min: 1, max: 150
     }

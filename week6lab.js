@@ -12,6 +12,12 @@ app.use(bodyParser.urlencoded({extended: false}))   //need this to get stuff fro
 app.engine('html', require('ejs').renderFile);
 app.listen(8080)
 
+var globalTITLE
+var globalAUTHOR
+var globalSUMMARY
+var globalDATE
+var globalISBN
+
 const url = 'mongodb://localhost:27017/library';   //where mongoDB is
 let database;
 mongoose.connect(url, function (err) {
@@ -32,26 +38,26 @@ function randomISBN() {  //ISBN has 13 digits since 2017, and consist only of nu
     });
 }
 
-app.get('/', function (req, res) {
-    res.render(__dirname + '/views/index.html', {isbnGenerated: randomISBN()})
+app.get('/', function (req, res) {      //homepage
+    res.render(__dirname + '/views/index.html')
 })
 
-app.get('/addbook', function (req, res) {
+app.get('/addbook', function (req, res) {       //add a book (week 6)
     res.render(__dirname + '/views/addBook.html', {isbnGenerated: randomISBN()})
 })
 
-app.get('/addauthor', function (req, res) {
+app.get('/addauthor', function (req, res) {     //add an author (week 6)
     res.render(__dirname + '/views/addAuthor.html')
 })
 
-app.get('/getAuthors', function (req, res) {
+app.get('/getAuthors', function (req, res) {    //show a table of authors(week 6)
     Author.find(function (err, data) {
         res.render(__dirname + '/views/getAllAuthors.html', {db: data})
     })
 })
 
 
-app.get('/getbooks', function (req, res) {
+app.get('/getbooks', function (req, res) {  //show a table of books (week 5, updated to week 6)
     Book.find({}).populate('author').exec(function (err, data) {
         res.render(__dirname + '/views/getBooks.html', {db: data})
     });
@@ -61,23 +67,20 @@ app.get('/updatebook', function (req, res) {
     res.render(__dirname + '/views/updateBook.html')
 })
 
-app.get('/deletebook', function (req, res) {
+app.get('/deletebook', function (req, res) {        //delete book by ISBN (week 5, updated to week 6)
     res.render(__dirname + '/views/deleteBook.html')
 })
 
-app.get('/invalidData', function (req, res) {
+app.get('/invalidData', function (req, res) {       //week 5, no longer in use since invalid data is redirected back to the page
     res.render(__dirname + '/views/invalidData.html')
 })
 
-app.get('/deleteauthor', function (req, res) {
-    res.render(__dirname + '/views/deleteauthor.html')
-})
 
-app.get('/updateAuthorNumBooks', function (req, res) {
+app.get('/updateAuthorNumBooks', function (req, res) {  //week 6
     res.render(__dirname + '/views/updateAuthorNumBooks.html')
 })
 
-app.get('/*', function (req, res) {
+app.get('/*', function (req, res) {     //week 5
     res.render(__dirname + '/views/404 (Page not found).html')
 })
 
@@ -106,7 +109,7 @@ app.post('/addingBook', function (req, res) {
                     }
 
         })
-        res.redirect('/getAuthors')}})})
+        res.redirect('/getBooks')}})})
 
     app.post('/addingAuthor', function (req, res) {
         FNAME = req.body.Fname
@@ -145,7 +148,74 @@ app.post('/addingBook', function (req, res) {
         })
     })
 
-    app.post('/deletus', function(req, res) {
+app.post('/updatingbook', function(req, res) {
+        if ((req.body.isbn) != "") {
+            isbn = parseInt(req.body.isbn)
+        } else {
+            res.redirect('/updatebook')
+        }
+
+        Book.findOne({ISBN: isbn}, function (err, docs) {
+            console.log(docs)
+            if(docs === null ){
+                res.redirect('/updatebook')
+            }
+        else {
+                if (req.body.title == "") {
+                    TITLE = docs.title
+                } else {
+                    TITLE = req.body.title
+                }
+                if (req.body.authorID == "") {
+                    AUTHOR = docs.author._id
+                } else {
+                    AUTHOR = mongoose.Types.ObjectId(req.body.authorID)
+                }
+                if (req.body.date == "") {
+                    DATE = docs.date
+                } else {
+                    DATE = new Date(req.body.date)
+                }
+                if (req.body.summary == "") {
+                    SUMMARY = docs.summary
+                } else {
+                    SUMMARY = req.body.summary
+                }
+                globalTITLE = TITLE
+                globalAUTHOR = AUTHOR
+                globalSUMMARY = SUMMARY
+                globalDATE = DATE
+                globalISBN = isbn
+            }
+
+            Book.findOneAndUpdate({ISBN: isbn}, {
+
+                $set: {
+                    title: globalTITLE,
+                    author: globalAUTHOR,
+                    date: globalDATE,
+                    summary: globalSUMMARY
+                }
+
+            }, function (err,doc){
+                if (err){
+                    res.redirect('/updatebooks')
+                }
+                else {
+                    res.redirect('/getbooks')
+                }
+                }
+
+            )
+
+
+        })
+})
+
+
+
+
+    app.post('/deletus', function(req, res) {   // Delete book by bookISBN with form data
         let ISBN = req.body.isbn
         Book.findOne({ISBN: ISBN}, function (err, docs) {
             tempAuthor = docs.author._id.toString()
@@ -153,52 +223,31 @@ app.post('/addingBook', function (req, res) {
         })
 
         Book.deleteOne({ISBN: ISBN}, function (err, docs) {
-            if (err){
+            if (err) {
                 console.log(err)
                 res.redirect('/deletebook')
             }
-            Author.findByIdAndUpdate(tempAuthor, {$inc: {numBooks: -1}}, function (req, res) {
-                res.redirect('/getBooks')
+            Author.findByIdAndUpdate(tempAuthor, {$inc: {numBooks: -1}}, function (err, doc) {
+                if (err) {
+                    console.log(err)
+                    res.redirect('/deletebook')
+                }
             })
-
+            res.redirect('/getbooks')
         })
     })
 
-    app.post('/updatingBook', function (req, res) {
-        TITLE = req.body.title
-        AUTHOR = req.body.author
-        ISBN = req.body.isbn
-        DATE = new Date(req.body.date)
-        SUMMARY = req.body.summary
-
-        if (req.body.isbn == "") {
-            res.redirect('/invalidData')
-        } else {
-            filter = {isbn: ISBN}   //ISBN is inputted
-            if (req.body.author != "") {
-                database.collection('library').updateOne(filter, {$set: {author: AUTHOR}})
-            }
-            if (req.body.title != "") {
-                database.collection('library').updateOne(filter, {$set: {title: TITLE}})
-            }
-            if (req.body.date != "") {
-                database.collection('library').updateOne(filter, {$set: {date: DATE}})
-            }
-            if (req.body.summary != "") {
-                database.collection('library').updateOne(filter, {$set: {summary: SUMMARY}})
-            }
-            res.redirect('/getbooks')
-        }
-    })
 
     app.post('/updateNumBooks', function (req, res) {
         NUMBOOKS = parseInt(req.body.numBooks)
         if (NUMBOOKS >= 1 && NUMBOOKS <= 150){
         Author.findByIdAndUpdate(req.body.authorID, {$set: {numBooks: parseInt(NUMBOOKS)}}, function (err, doc) {
+            if (err){
+                res.redirect('/updateAuthorNumBooks')
+            }
+            else{
             console.log(doc)
-            res.redirect('/getAuthors')
+            res.redirect('/getbooks')}
         })}
-        else{
-            res.redirect('/updateNumBooks')
-        }
+
     })
