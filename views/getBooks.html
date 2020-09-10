@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href= "styles.css">
+    <meta charset="UTF-8">
+    <title>List of Books</title>
+</head>
+<body>
+<a href="/" >Home</a>
+<a href="/addbook" >Add Book</a>
+<a href="/getbooks" >Get All Books</a>
+<a href="/updatebook" >Update Book</a>
+<a href="/deletebook" >Delete Book by ISBN</a>
+<a href="/deleteauthor" >Delete Books by Author</a>
+<h2 style = "color: cyan; text-align: center">
+    Here, a table of books currently in the library is generated. There are currently <%= db.length %> books!
+    <br>
+    Be careful of the button at the bottom. It removes all documents on the database
+</h2>
+<table>
+    <tr>
+        <td> Index </td>
+        <td> Title </td>
+        <td> Author ID</td>
+        <td> Author First Name</td>
+        <td> Author Last Name</td>
+        <td> ISBN </td>
+        <td> Date of Publication </td>
+        <td> Summary </td>
+    </tr>
+    <% for (let i=0;i<db.length;i++){ %>
+    <tr>
+        <td><%= i+1 %> </td>
+        <td> <%= db[i].title %> </td>
+        <td><%= db[i].author._id %></td>
+        <td><%= db[i].author.name.firstName %></td>
+        <td><%= db[i].author.name.lastName %></td>
+        <td><%= db[i].ISBN %> </td>
+        <td> <%= db[i].date.toDateString() %> </td>
+        <td><%= db[i].summary %></td>
+    </tr>
+    <%}%>
+</table>
+
+<form action="/nuke" method="POST">
+    Removes all Books from MongoDB :
+    <button>Delete All</button>
+</form>
+
+</body>
+</html>

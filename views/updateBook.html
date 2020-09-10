@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href= "styles.css">
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+</head>
+<body>
+<a href="/" >Home</a>
+<a href="/addbook" >Add Book</a>
+<a href="/getbooks" >Get All Books</a>
+<a href="/updatebook" >Update Book</a>
+<a href="/deletebook" >Delete Book by ISBN</a>
+<a href="/deleteauthor" >Delete Books by Author</a>
+<h2 style = "color: cyan; text-align: center">
+    You can update the details of books here. ISBN is mandatory, and a blank field means the previous details will not be changed
+</h2>
+<form action="/updatingBook" method="POST">
+    Title of Book:
+    <input type="text" name="title" /> </br>
+    Name of Author:
+    <input type="text" name="author" /> </br>
+    ISBN of Book:
+    <input type="number" name="isbn" > </br>
+    Date of Publication:
+    <input type="date" name="date" /> </br>
+    Summary of Book:
+    <input type="text" name="summary" /> </br>
+    <button>Submit</button>
+</form>
+
+
+</body>
+</html>

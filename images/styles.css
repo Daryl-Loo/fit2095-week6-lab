@@ -1,0 +1,42 @@
+/*Make the background color cyan */
+body { background-image: url("librarybackgroundimage.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;}
+
+ /*!*centre images*!*/
+ /*img {display: block;*/
+ /*    alignment: bottom;*/
+ /*    margin-left: auto;*/
+ /*    margin-right: auto}*/
+
+/* Buttons for link*/
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+/* <a href="default.asp" >words within button</a>*/
+
+a:hover, a:active {
+    background-color: red;
+}
+
+table,th,td {
+    border: 1px solid black;
+    alignment:bottom;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    color: black;
+}
+
+form {
+    border: 1px solid black;
+    background-color: whitesmoke;
+    text-align: center;
+    color: black;
+}

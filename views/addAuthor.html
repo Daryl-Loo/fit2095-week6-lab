@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href= "styles.css">
+    <meta charset="UTF-8">
+    <title>Add Author</title>
+</head>
+<body>
+<a href="/" >Home</a>
+<a href="/addbook" >Add Book</a>
+<a href="/getbooks" >Get All Books</a>
+<a href="/updatebook" >Update Book</a>
+<a href="/deletebook" >Delete Book by ISBN</a>
+<a href="/deleteauthor" >Delete Books by Author</a>
+<h2 style = "color: cyan; text-align: center">
+    You can add a new Author here. Only the first name is mandatory.
+</h2>
+<form action="/addingAuthor" method="POST">
+    Name of Author: </br>
+    First Name:
+    <input type="text" name="Fname" /> </br>
+    Last Name:
+    <input type="text" name="Lname" /> </br>
+    Date of Birth:
+    <input type="date" name="dob" /> </br>
+    Address of Author: </br>
+    State:
+    <input type="text" name="state" /> </br>
+    Suburb:
+    <input type="text" name="suburb" /> </br>
+    Street:
+    <input type="text" name="street" /> </br>
+    Unit:
+    <input type="text" name="unit" /> </br>
+    Number of Books written:
+    <input type="number" name="numBooks" /> </br>
+
+    <button>Submit</button>
+</form>
+
+</body>
+</html>
