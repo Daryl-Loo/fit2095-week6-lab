@@ -4,11 +4,11 @@ body { background-image: url("librarybackgroundimage.jpg");
     background-attachment: fixed;
     background-position: center;}
 
- /*!*centre images*!*/
- /*img {display: block;*/
- /*    alignment: bottom;*/
- /*    margin-left: auto;*/
- /*    margin-right: auto}*/
+ /*centre images*/
+ img {display: block;
+     alignment: bottom;
+     margin-left: auto;
+     margin-right: auto}
 
 /* Buttons for link*/
 a:link, a:visited {

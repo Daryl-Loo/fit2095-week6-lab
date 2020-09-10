@@ -19,7 +19,7 @@ var globalDATE
 var globalISBN
 
 const url = 'mongodb://localhost:27017/library';   //where mongoDB is
-let database;
+let db;
 mongoose.connect(url, function (err) {
     if (err) {
         console.log('Error in Mongoose connection');
@@ -27,8 +27,6 @@ mongoose.connect(url, function (err) {
     }
     var db = mongoose.connection
     console.log('Successfully connected')});
-
-
 
 
 function randomISBN() {  //ISBN has 13 digits since 2017, and consist only of numeric characters.
@@ -101,7 +99,7 @@ app.post('/addingBook', function (req, res) {
     })
     book1.save(function (err) {
         if (err) {
-            throw err;
+            res.redirect('/addbook');
         } else {
             Author.findByIdAndUpdate(req.body.authorID, {$inc: {numBooks: 1}}, function (req, res) {
                     if (err) {
@@ -139,10 +137,8 @@ app.post('/addingBook', function (req, res) {
         })
         author1.save(function (err) {
             if (err) {
-                console.log(err)
                 res.redirect('/addauthor');
             } else {
-                console.log('author saved')
                 res.redirect('/getAuthors')
             }
         })
