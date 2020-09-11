@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href= "styles.css">
-    <title>Index</title>
+    <meta charset="UTF-8">
+    <title>Delete Author</title>
 </head>
 <body>
 <a href="/">Home</a>
@@ -14,11 +14,10 @@
 <!--<a href="/updatebook">Update a book by ISBN</a>-->
 <a href="/deletebook">Delete book by book ISBN</a>
 <a href="/updateAuthorNumBooks">Update Author numBooks by _id</a>
-
-<img src = "libraryLogo.png" >
-<h1 style = "color: cyan; text-align: center">
-    Welcome to the library. Follow the Buttons to Begin Your Journey!
-</h1>
-
+<form action="/deletingAuthor" method="POST">
+    Author you are cancelling :
+    <input type="text" name="author"> </br>
+    <button>Submit</button>
+</form>
 </body>
 </html>

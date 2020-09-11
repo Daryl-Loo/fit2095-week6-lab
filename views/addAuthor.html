@@ -6,16 +6,16 @@
     <title>Add Author</title>
 </head>
 <body>
-<a href="/" >Home</a>
-<a href="/addbook" >Insert new Book </a>
-<a href="/getbooks" >Get all Books</a>
-<a href="/addauthor" >Insert a new Author</a>
-<a href="/getAuthors" >Get all Authors</a>
-<a href="/updatebook" >Update a book by ISBN</a>
-<a href="/deletebook" >Delete book by book ISBN</a>
-<a href="/updateAuthorNumBooks" >Update Author numBooks by _id</a>
+<a href="/">Home</a>
+<a href="/addbook">Insert new Book </a>
+<a href="/getbooks">Get all Books</a>
+<a href="/addauthor">Insert a new Author</a>
+<a href="/getAuthors">Get all Authors</a>
+<!--<a href="/updatebook">Update a book by ISBN</a>-->
+<a href="/deletebook">Delete book by book ISBN</a>
+<a href="/updateAuthorNumBooks">Update Author numBooks by _id</a>
 <h2 style = "color: cyan; text-align: center">
-    You can add a new Author here. Remember that an Author must have a First Name, a date of birth, a State and Number of Books in the database
+    You can add a new Author here. Remember an Author must have a first name, a date of birth, number of books writen. Also if he has an ABN, it must be 11 numeric characters long
 </h2>
 <form action="/addingAuthor" method="POST">
     Name of Author: </br>
@@ -36,6 +36,8 @@
     <input type="text" name="unit" /> </br>
     Number of Books written:
     <input type="number" name="numBooks" /> </br>
+    Author ABN:
+    <input type="number" name="abn" /> </br>
 
     <button>Submit</button>
 </form>

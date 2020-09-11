@@ -6,30 +6,29 @@
     <title>Add Book</title>
 </head>
 <body>
-<a href="/" >Home</a>
-<a href="/addbook" >Insert new Book </a>
-<a href="/getbooks" >Get all Books</a>
-<a href="/addauthor" >Insert a new Author</a>
-<a href="/getAuthors" >Get all Authors</a>
-<a href="/updatebook" >Update a book by ISBN</a>
-<a href="/deletebook" >Delete book by book ISBN</a>
-<a href="/updateAuthorNumBooks" >Update Author numBooks by _id</a>
+<a href="/">Home</a>
+<a href="/addbook">Insert new Book </a>
+<a href="/getbooks">Get all Books</a>
+<a href="/addauthor">Insert a new Author</a>
+<a href="/getAuthors">Get all Authors</a>
+<!--<a href="/updatebook">Update a book by ISBN</a>-->
+<a href="/deletebook">Delete book by book ISBN</a>
+<a href="/updateAuthorNumBooks">Update Author numBooks by _id</a>
 <h2 style = "color: cyan; text-align: center">
-    Update the book by ISBN
+    You can update the details of books here. ISBN is mandatory, and a blank field means the previous details will not be changed
 </h2>
 <form action="/updatingBook" method="POST">
     Title of Book:
     <input type="text" name="title" /> </br>
-    Author ID:
-    <input type="text" name="authorID" /> </br>
     ISBN of Book:
-    <input type="number" name="isbn" value = /> </br>
+    <input type="number" name="isbn" > </br>
     Date of Publication:
     <input type="date" name="date" /> </br>
     Summary of Book:
     <input type="text" name="summary" /> </br>
     <button>Submit</button>
 </form>
+
 
 </body>
 </html>

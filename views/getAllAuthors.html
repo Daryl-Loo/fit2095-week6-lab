@@ -6,17 +6,18 @@
     <title>Get all Authors</title>
 </head>
 <body>
-<a href="/" >Home</a>
-<a href="/addbook" >Insert new Book </a>
-<a href="/getbooks" >Get all Books</a>
-<a href="/addauthor" >Insert a new Author</a>
-<a href="/getAuthors" >Get all Authors</a>
-<a href="/updatebook" >Update a book by ISBN</a>
-<a href="/deletebook" >Delete book by book ISBN</a>
-<a href="/updateAuthorNumBooks" >Update Author numBooks by _id</a>
+<a href="/">Home</a>
+<a href="/addbook">Insert new Book </a>
+<a href="/getbooks">Get all Books</a>
+<a href="/addauthor">Insert a new Author</a>
+<a href="/getAuthors">Get all Authors</a>
+<!--<a href="/updatebook">Update a book by ISBN</a>-->
+<a href="/deletebook">Delete book by book ISBN</a>
+<a href="/updateAuthorNumBooks">Update Author numBooks by _id</a>
 <h2 style = "color: cyan; text-align: center">
-    Here, a table of authors currently in the library is generated. There are currently <%= db.length %> Authors!
-
+    Here, a table of authors currently in the library is generated. There are currently <%= db.length %> books!
+    <br>
+    Be careful of the button at the bottom. It removes all documents on the database
 </h2>
 <table>
     <tr>
@@ -29,7 +30,8 @@
         <td> Suburb </td>
         <td> Street </td>
         <td> Unit </td>
-        <td> Author ID </td>
+        <td> Object ID </td>
+        <td> Author ABN </td>
     </tr>
     <% for (let i=0;i<db.length;i++){ %>
     <tr>
@@ -43,10 +45,14 @@
         <td><%= db[i].address.street %></td>
         <td><%= db[i].address.unit %></td>
         <td><%= db[i]._id.toString() %></td>
+        <td><% if(db[i].ABN.length == 11){ %>
+            <%= db[i].ABN %>
+            <% } else{ %>
+            <h1> - </h1>
+            <% } %></td>
     </tr>
     <%}%>
 </table>
-
 
 </body>
 </html>

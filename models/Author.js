@@ -11,30 +11,41 @@ const authorSchema = mongoose.Schema({
             required: false
         }
     },
+
+    ABN:{
+        type: String,    //we will be using number on the forms, so only numeric characters can be inputed
+        required: false,
+        validate: {
+        validator: function (abnLength) {
+            return abnLength.length === 11 || abnLength.length === 0
+        }
+},
+message: 'Length of state should be between 2 to 3 character'
+    },
     dob: {
         type: Date,
         required: false
     },
     address: {
-        state:{
-        required: false,
+        state: {
+            required: false,
             type: String,
-            validate:{
-                validator: function(stateLength){
-                    return stateLength.length >=2 && stateLength.length <=3;
+            validate: {
+                validator: function (stateLength) {
+                    return (stateLength.length >= 2 && stateLength.length <= 3) || (stateLength.length === 0);
                 },
                 message: 'Length of state should be between 2 to 3 character'
             }
         },
-        suburb:{
+        suburb: {
             required: false,
             type: String
         },
-        street:{
+        street: {
             required: false,
             type: String
         },
-        unit:{
+        unit: {
             required: false,
             type: String
         }

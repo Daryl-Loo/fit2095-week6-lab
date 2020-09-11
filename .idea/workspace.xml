@@ -24,11 +24,18 @@
   <component name="ChangeListManager">
     <list default="true" id="6d70c715-4f14-40d7-89fd-21a04def1138" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/images/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Author.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Author.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Book.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/404 (Page not found).html" beforeDir="false" afterPath="$PROJECT_DIR$/views/404 (Page not found).html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/addAuthor.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/addAuthor.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/addBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/addBook.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/deleteBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/deleteBook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/getAllAuthors.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/getAllAuthors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/getBooks.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/getBooks.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/invalidData.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/invalidData.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/updateAuthorNumBooks.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/updateAuthorNumBooks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/updateBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/updateBook.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/week6lab.js" beforeDir="false" afterPath="$PROJECT_DIR$/week6lab.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +95,7 @@
     <configuration name="deleteBook.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/week6lab/views/deleteBook.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="getBooks.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/week6lab/views/getBooks.html" useBuiltInWebServerPort="true">
+    <configuration name="getAllAuthors.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/week6lab/views/getAllAuthors.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/week6lab/views/index.html" useBuiltInWebServerPort="true">
@@ -103,10 +110,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.week6lab.js" />
+        <item itemvalue="JavaScript Debug.getAllAuthors.html" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.updateAuthorNumBooks.html" />
         <item itemvalue="JavaScript Debug.deleteBook.html" />
-        <item itemvalue="JavaScript Debug.getBooks.html" />
       </list>
     </recent_temporary>
   </component>
@@ -131,6 +138,9 @@
       <workItem from="1599722011382" duration="847000" />
       <workItem from="1599722928298" duration="15153000" />
       <workItem from="1599741515719" duration="2834000" />
+      <workItem from="1599747497256" duration="403000" />
+      <workItem from="1599795875741" duration="3255000" />
+      <workItem from="1599799438163" duration="3764000" />
     </task>
     <servers />
   </component>
@@ -154,22 +164,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599660675313" />
-    <state width="1899" height="225" key="GridCell.Tab.0.bottom" timestamp="1599746629887">
+    <state width="1899" height="82" key="GridCell.Tab.0.bottom" timestamp="1599803205047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599746629887" />
-    <state width="1899" height="225" key="GridCell.Tab.0.center" timestamp="1599746629887">
+    <state width="1899" height="82" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599803205047" />
+    <state width="1899" height="82" key="GridCell.Tab.0.center" timestamp="1599803205047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="225" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599746629887" />
-    <state width="1899" height="225" key="GridCell.Tab.0.left" timestamp="1599746629887">
+    <state width="1899" height="82" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599803205047" />
+    <state width="1899" height="82" key="GridCell.Tab.0.left" timestamp="1599803205047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="225" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599746629887" />
-    <state width="1899" height="225" key="GridCell.Tab.0.right" timestamp="1599746629887">
+    <state width="1899" height="82" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599803205047" />
+    <state width="1899" height="82" key="GridCell.Tab.0.right" timestamp="1599803205047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="225" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599746629887" />
+    <state width="1899" height="82" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1599803205047" />
     <state width="1899" height="213" key="GridCell.Tab.1.bottom" timestamp="1599738770647">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

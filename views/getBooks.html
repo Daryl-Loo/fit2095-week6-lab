@@ -6,17 +6,17 @@
     <title>List of Books</title>
 </head>
 <body>
-<a href="/" >Home</a>
-<a href="/addbook" >Insert new Book </a>
-<a href="/getbooks" >Get all Books</a>
-<a href="/addauthor" >Insert a new Author</a>
-<a href="/getAuthors" >Get all Authors</a>
-<a href="/updatebook" >Update a book by ISBN</a>
-<a href="/deletebook" >Delete book by book ISBN</a>
-<a href="/updateAuthorNumBooks" >Update Author numBooks by _id</a>
+<a href="/">Home</a>
+<a href="/addbook">Insert new Book </a>
+<a href="/getbooks">Get all Books</a>
+<a href="/addauthor">Insert a new Author</a>
+<a href="/getAuthors">Get all Authors</a>
+<!--<a href="/updatebook">Update a book by ISBN</a>-->
+<a href="/deletebook">Delete book by book ISBN</a>
+<a href="/updateAuthorNumBooks">Update Author numBooks by _id</a>
 <h2 style = "color: cyan; text-align: center">
-    Here, a table of books currently in the library database is generated. There are currently <%= db.length %> books!
-
+    Here, a table of books currently in the library is generated. There are currently <%= db.length %> books!
+    <br>
 </h2>
 <table>
     <tr>
@@ -28,6 +28,7 @@
         <td> ISBN </td>
         <td> Date of Publication </td>
         <td> Summary </td>
+        <td> Author ABN </td>
     </tr>
     <% for (let i=0;i<db.length;i++){ %>
     <tr>
@@ -39,6 +40,11 @@
         <td><%= db[i].ISBN %> </td>
         <td> <%= db[i].date.toDateString() %> </td>
         <td><%= db[i].summary %></td>
+        <td><% if(db[i].author.ABN.length == 11){ %>
+            <%= db[i].author.ABN.slice(0,2) + " "+ db[i].author.ABN.slice(2,5) + " "+ db[i].author.ABN.slice(5,8) + " "+db[i].author.ABN.slice(8,11) %>
+            <% } else{ %>
+            <h1> - </h1>
+            <% } %></td>
     </tr>
     <%}%>
 </table>

@@ -6,12 +6,12 @@ const bookSchema = mongoose.Schema({
         required: true
     },
     author: {
-        type:mongoose.Schema.Types.ObjectId, ref: "Author"
-    } ,
+        type: mongoose.Schema.Types.ObjectId, ref: "Author"
+    },
     ISBN: {
         type: Number,
-        validate:{
-            validator: function(isbnValue){
+        validate: {
+            validator: function (isbnValue) {
                 return isbnValue.toString().length === 13;
             },
             message: "ISBN must be 13 digits only"
@@ -19,7 +19,8 @@ const bookSchema = mongoose.Schema({
     },
     date: {
         type: Date,
-        default: Date.now},
+        default: Date.now
+    },
     summary: {
         type: String
     }
